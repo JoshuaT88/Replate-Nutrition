@@ -1,5 +1,15 @@
-* {
+/* ============================================
+   APP LAYOUT - Structure & Theme
+   ============================================ */
+
+body,
+#root {
   background-color: #fff;
+  font-family: system-ui, sans-serif;
+}
+
+#root {
+  width: 100%;
 }
 
 html,
@@ -8,15 +18,13 @@ body {
   height: 100%;
 }
 
-#root {
-  font-family: system-ui, sans-serif;
-  width: 100%;
-}
+/* ============================================
+   HOMEPAGE LAYOUT
+   ============================================ */
 
 .homepage {
   min-height: 100vh;
   padding: 2rem;
-  
   box-sizing: border-box;
 }
 
@@ -25,38 +33,37 @@ body {
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
-  
 }
 
-  
+/* ============================================
+   HOMEPAGE CARD COMPONENT
+   ============================================ */
 
 .card {
   background: white;
   border-radius: 16px;
   padding: 1.25rem;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
-
 
 .cardTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 
 .cardTitle {
   font-size: 0.75rem;
@@ -71,6 +78,11 @@ body {
   font-weight: 800;
   color: #111827;
 }
+
+/* ============================================
+   HOMEPAGE ICON WRAPPER COMPONENT
+   ============================================ */
+
 .iconWrapper {
   width: 44px;
   height: 44px;
@@ -89,20 +101,20 @@ body {
   transform: scale(1.15);
 }
 
-/* Variants */
+/* Icon color variants */
 .iconWrapper.blue {
   background: #3b82f6;
-  box-shadow: 0 6px 14px rgba(59,130,246,0.35);
+  box-shadow: 0 6px 14px rgba(59, 130, 246, 0.35);
 }
 
 .iconWrapper.purple {
   background: #9d42f0;
-  box-shadow: 0 6px 14px rgba(157,66,240,0.35);
+  box-shadow: 0 6px 14px rgba(157, 66, 240, 0.35);
 }
 
 .iconWrapper.orange {
   background: #e58808;
-  box-shadow: 0 6px 14px rgba(229,136,8,0.35);
+  box-shadow: 0 6px 14px rgba(229, 136, 8, 0.35);
 }
 
 
