@@ -16,6 +16,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 /* ============================================
@@ -24,7 +25,7 @@ body {
 
 .app-container {
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 320px 1fr;
   min-height: 100vh;
   gap: 0;
 }
@@ -39,6 +40,19 @@ body {
 /* ============================================
    NAVBAR - Vertical Sidebar / Responsive Menu
    ============================================ */
+
+/* Wrapper to contain all navbar elements as single grid item */
+.navbar-wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+@media (max-width: 800px) {
+  .navbar-wrapper {
+    position: static;
+    height: auto;
+  }
+}
 
 .dividerLine {
    height: 1px;
@@ -56,50 +70,77 @@ body {
   height: 100vh;
   overflow-y: auto;
   position: relative;
-  width: auto;
+  width: 320px;
 }
 
+/* Desktop Header Container */
+.navTopContainer {
+  display: block;
+}
 
+@media (max-width: 800px) {
+  .navTopContainer {
+    display: block;
+  }
+
+  .navbar {
+    width: 280px !important;
+    position: fixed !important;
+  }
+}
 
 .navHeaderContainer {
   display: flex;
-  flex-direction:row;
-  justify-content: center;
-  align-items:normal;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   gap: 1rem;
-  
+  margin-bottom: 0;
+  min-width: 0;
 }
 
 .navHeaderBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
-  
-  margin-bottom: 1rem;
-  margin-left:0;
+  align-items: flex-start;
+  min-width: 0;
+  line-height: 10px;
 }
-.fa-utensils {
-  color: white;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  border-radius: 16px;
-  padding: 1rem;
-  background-color:#2e70f0;
+
+.fa-sprout {
+  color: #88c1f7;
+  font-size: 1.7rem;
+  flex-shrink:0;
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 12px rgba(59, 130, 246, 0.3));
 }
 
 .navHeader {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 650;
+  letter-spacing: -1px;
   padding: 0;
   margin: 0;
   color: #fff;
+  line-height: 1.3;
+  white-space: normal;
 }
 
 .slogan {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 550;
+  letter-spacing: .3px;
   padding: 0;
-  margin: 0.5rem 0 0 0;
-  color: #a0a8b8;
+  margin: 0.25rem 0 0 0;
+  color: #70b5f5;
+}
+
+
+/* Mobile - Keep desktop header visible in popup */
+@media (max-width: 800px) {
+  .navHeaderContainer {
+    display: flex;
+  }
 }
 
 /* Desktop Navigation Links */
@@ -128,8 +169,18 @@ body {
   color: #fff;
 }
 
+/* Hide mobile-only elements on desktop */
+.nav-close-btn {
+  display: none;
+}
+
 /* Mobile Top Bar - Hidden on Desktop */
 .navbar-mobile-top {
+  display: none;
+}
+
+/* Mobile Overlay - Hidden on Desktop */
+.navbar-overlay {
   display: none;
 }
 
@@ -139,12 +190,15 @@ body {
 
 @media (max-width: 800px) {
   .navbar {
-    width: 280px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 320px;
     height: 100vh;
     flex-direction: column;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    z-index: 1000;
+    z-index: 1002;
     padding: 1.5rem;
     overflow-y: auto;
   }
@@ -153,44 +207,34 @@ body {
     transform: translateX(0);
   }
 
-  /* Mobile Overlay */
-  .navbar::before {
-    content: '';
+  /* Mobile Overlay - Separate div for better control */
+  .navbar-overlay {
+    display: block;
     position: fixed;
     top: 0;
-    left: 280px;
+    left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 999;
-  }
-
-  .navbar.menu-open::before {
-    opacity: 1;
-    pointer-events: auto;
+    z-index: 1001;
+    cursor: pointer;
   }
 
   /* Mobile Top Bar */
   .navbar-mobile-top {
-    display: flex;
+    display: flex !important;
+    visibility: visible !important;
     align-items: center;
     justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #111a2c;
+    background-color: #272e3f;
     padding: 1rem;
     z-index: 1001;
     gap: 1rem;
     border-bottom: 1px solid #1f2a3c;
-  }
-
-  .navHeaderContainer {
-    display: none;
   }
 
   .navbar-mobile-title {
@@ -207,31 +251,28 @@ body {
     border: none;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 0;
-    z-index: 1001;
-  }
-
-  .hamburger-line {
-    width: 24px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    z-index: 1002;
+    color: white;
+    font-size: 1.5rem;
     transition: all 0.3s ease;
   }
 
-  /* Hamburger Animation */
-  .navbar.menu-open .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
+  .hamburger-btn:hover {
+    background-color: #2d3e58;
+    border-radius: 6px;
   }
 
-  .navbar.menu-open .hamburger-line:nth-child(2) {
+  .hamburger-btn:active {
+    opacity: 0.6;
+  }
+
+  /* Hide hamburger when menu is open */
+  .hamburger-btn.active {
     opacity: 0;
-  }
-
-  .navbar.menu-open .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    pointer-events: none;
   }
 
   /* User Avatar in Top Bar */
@@ -257,19 +298,38 @@ body {
 
   /* Mobile Navigation Links - Slide in from left */
   .nav-links {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 280px;
-    height: calc(100vh - 60px);
-    background-color: #111a2c;
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    background-color: transparent;
     flex-direction: column;
     gap: 0;
     padding-top: 0;
+    display: flex;
   }
 
-  .navbar .nav-links.open {
-    display: flex;
+  /* Mobile Close Button */
+  .nav-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #a0a8b8;
+    align-self: flex-end;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .nav-close-btn:hover {
+    color: #fff;
+  }
+
+  .nav-close-btn:active {
+    opacity: 0.8;
   }
 
   .navbar a {
@@ -291,15 +351,22 @@ body {
 
 .main-content {
   overflow-y: auto;
-  flex: 1;
+  overflow-x: hidden;
+  min-width: 0;
+  background-color: #fff;
+  padding-left: 3rem;
 }
 
 @media (max-width: 800px) {
   .main-content {
     padding-top: 60px;
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
-    min-height: 100vh;
-    padding-top: 60px;
+    max-width: 100vw;
+    min-height: calc(100vh - 60px);
+    display: block;
+    box-sizing: border-box;
   }
 }
 
@@ -311,6 +378,14 @@ body {
   min-height: 100vh;
   padding: 2rem;
   box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 800px) {
+  .homepage {
+    padding: 1rem;
+  }
 }
 
 .card-grid {
@@ -320,7 +395,7 @@ body {
   box-sizing: border-box;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: clamp(1rem, 2vw, 2rem);
 }
 
