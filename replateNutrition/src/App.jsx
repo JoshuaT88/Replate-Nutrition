@@ -13,7 +13,9 @@ import './App.css'
 function App() {
   return (
     <BrowserRouter>
+    <div className="app-container">
       <Navbar />
+    <main className="main-content">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/profiles" element={<Profiles />} />
@@ -23,6 +25,8 @@ function App() {
         <Route path="/trips" element={<Trips />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
+    </main>
+    </div>
     </BrowserRouter>
   )
 }

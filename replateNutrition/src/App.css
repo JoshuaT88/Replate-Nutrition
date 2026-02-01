@@ -19,6 +19,291 @@ body {
 }
 
 /* ============================================
+   APP CONTAINER - Main Layout Grid
+   ============================================ */
+
+.app-container {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  min-height: 100vh;
+  gap: 0;
+}
+
+@media (max-width: 800px) {
+  .app-container {
+    display: block;
+    min-height: 100vh;
+  }
+}
+
+/* ============================================
+   NAVBAR - Vertical Sidebar / Responsive Menu
+   ============================================ */
+
+.dividerLine {
+   height: 1px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 1rem 0;
+}
+
+.navbar {
+  background-color: #111a2c;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #e0e0e0;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  width: auto;
+}
+
+
+
+.navHeaderContainer {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items:normal;
+  gap: 1rem;
+  
+}
+
+.navHeaderBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  
+  margin-bottom: 1rem;
+  margin-left:0;
+}
+.fa-utensils {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 16px;
+  padding: 1rem;
+  background-color:#2e70f0;
+}
+
+.navHeader {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+
+.slogan {
+  font-size: 0.75rem;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  color: #a0a8b8;
+}
+
+/* Desktop Navigation Links */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a0a8b8;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar a:hover {
+  background-color: #1f2a3c;
+  color: #fff;
+}
+
+/* Mobile Top Bar - Hidden on Desktop */
+.navbar-mobile-top {
+  display: none;
+}
+
+/* ============================================
+   NAVBAR - MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 800px) {
+  .navbar {
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+
+  .navbar.menu-open {
+    transform: translateX(0);
+  }
+
+  /* Mobile Overlay */
+  .navbar::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 280px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+  }
+
+  .navbar.menu-open::before {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile Top Bar */
+  .navbar-mobile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #111a2c;
+    padding: 1rem;
+    z-index: 1001;
+    gap: 1rem;
+    border-bottom: 1px solid #1f2a3c;
+  }
+
+  .navHeaderContainer {
+    display: none;
+  }
+
+  .navbar-mobile-title {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #fff;
+    flex: 1;
+    text-align: center;
+  }
+
+  /* Hamburger Button */
+  .hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+    z-index: 1001;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Hamburger Animation */
+  .navbar.menu-open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+
+  .navbar.menu-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar.menu-open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* User Avatar in Top Bar */
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #646cff);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-weight: bold;
+  }
+
+  .user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Mobile Navigation Links - Slide in from left */
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 60px);
+    background-color: #111a2c;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0;
+  }
+
+  .navbar .nav-links.open {
+    display: flex;
+  }
+
+  .navbar a {
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    color: #a0a8b8;
+    text-align: left;
+  }
+
+  .navbar a:hover {
+    background-color: #1f2a3c;
+    color: #fff;
+  }
+}
+
+/* ============================================
+   MAIN CONTENT - Page Content Area
+   ============================================ */
+
+.main-content {
+  overflow-y: auto;
+  flex: 1;
+}
+
+@media (max-width: 800px) {
+  .main-content {
+    padding-top: 60px;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+}
+
+/* ============================================
    HOMEPAGE LAYOUT
    ============================================ */
 
