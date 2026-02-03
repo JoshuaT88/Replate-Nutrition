@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import image from '../assets/react.svg'
 
 export default function Navbar() {
@@ -16,7 +16,7 @@ export default function Navbar() {
                 <button className={`hamburger-btn ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
                     <i className="fa-solid fa-bars"></i>
                 </button>
-                <h2 className="navbar-mobile-title">Replate Nutrition</h2>
+                <h2 className="navbar-mobile-title"><i className="fa-solid fa-sprout"></i> Replate Nutrition</h2>
                 <div className="user-avatar">
                     <img src={image} alt="User" />
                 </div>
@@ -50,13 +50,13 @@ export default function Navbar() {
                 {/* Navigation Links */}
                 <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
                         
-                    <Link to="/" onClick={() => setIsMenuOpen(false)}><i className="fa-regular fa-house"></i>Home</Link>  
-                    <Link to="/profiles" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-user-group" />Profiles</Link>
-                    <Link to="/recommendations" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-arrow-trend-up"></i>Recommendations</Link> 
-                    <Link to="/mealplan" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-calendar"></i>Meal Planning</Link> 
-                    <Link to="/shopping" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-cart-shopping"></i>Shopping</Link>
-                    <Link to="/trips" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-receipt"></i>Completed Trips</Link>
-                    <Link to="/settings" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-gear"></i>Settings</Link>
+                    <NavLink to="/" onClick={() => setIsMenuOpen(false)}><i className="fa-regular fa-house"></i>Home</NavLink>  
+                    <NavLink to="/profiles" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-user-group" />Profiles</NavLink>
+                    <NavLink to="/recommendations" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-arrow-trend-up"></i>Recommendations</NavLink> 
+                    <NavLink to="/mealplan" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-calendar"></i>Meal Planning</NavLink> 
+                    <NavLink to="/shopping" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-cart-shopping"></i>Shopping</NavLink>
+                    <NavLink to="/trips" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-receipt"></i>Completed Trips</NavLink>
+                    <NavLink to="/settings" onClick={() => setIsMenuOpen(false)}><i className="fa-solid fa-gear"></i>Settings</NavLink>
                 </div>
             </nav>
         </>
