@@ -1,38 +1,52 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 import image from '../assets/react.svg'
 
-export default function Homepage() {
+
+
+export default function Homepage(props) {
+
+  
+
   return (
     <div className="homepage">
       <div className="card-grid">
-        <div className="card">
-          <div className="cardTop">
-            <span className="cardTitle">ACTIVE PROFILES</span>
-            <div className="iconWrapper blue">
-              <i className="fa-solid fa-user-group" />
+        <Link to="/profiles" className="card-link">
+          <div className="card">
+            <div className="cardTop">
+              <span className="cardTitle">ACTIVE PROFILES</span>
+              <div className="iconWrapper blue">
+                <i className="fa-solid fa-user-group" />
+              </div>
             </div>
+            <div className="cardCounter">{props.profilesCount}</div>
           </div>
-          <div className="cardCounter">2</div>
-        </div>
+        </Link>
 
-        <div className="card">
-          <div className="cardTop">
-            <span className="cardTitle">SHOPPING ITEMS</span>
-            <div className="iconWrapper purple">
-              <i className="fa-solid fa-cart-shopping" />
+        <Link to="/shopping" className="card-link">
+          <div className="card">
+            <div className="cardTop">
+              <span className="cardTitle">SHOPPING ITEMS</span>
+              <div className="iconWrapper purple">
+                <i className="fa-solid fa-cart-shopping" />
+              </div>
             </div>
+            <div className="cardCounter">{props.shoppingItemsCount}</div>
           </div>
-          <div className="cardCounter">1</div>
-        </div>
+        </Link>
 
-        <div className="card">
-          <div className="cardTop">
-            <span className="cardTitle">TODAY'S MEALS</span>
-            <div className="iconWrapper orange">
-              <i className="fa-solid fa-calendar" />
+        <Link to="/mealplan" className="card-link">
+          <div className="card">
+            <div className="cardTop">
+              <span className="cardTitle">TODAY'S MEALS</span>
+              <div className="iconWrapper orange">
+                <i className="fa-solid fa-calendar" />
+              </div>
             </div>
+            <div className="cardCounter">{props.todaysMealsCount}</div>
           </div>
-          <div className="cardCounter">3</div>
-        </div>
+        </Link>
       </div>
 
       <div className="appInsightContainer">
