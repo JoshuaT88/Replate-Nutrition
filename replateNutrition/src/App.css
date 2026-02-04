@@ -422,8 +422,15 @@ body {
   box-sizing: border-box;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: clamp(1rem, 2vw, 2rem);
+}
+
+/* Card Link Wrapper */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 /* ============================================
@@ -524,41 +531,126 @@ margin-top: 10px;
    ============================================ */
 
 .appInsightContainer {
-  display:flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  max-width: 1280px;
+  margin: 2rem auto 0;
   width: 100%;
-  height: 100%;
+  box-sizing: border-box;
 }
 
- .profileInsights, .quickTips {
+.profileInsights, .quickTips {
   background: white;
   border-radius: 16px;
-  width: 100%;
-  height: 100%;
-  
-  padding: 1.2rem;
+  padding: 1.5rem;
   border: 1px solid #e5e7eb;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  margin: 2rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
- }
+  min-height: 180px;
+}
 
 
- .profileInsights .fa-user-group, .fa-person-circle-question {
-  color: #3b82f6;
- }
-
- .profileDetails {
+.insightTitle {
   display: flex;
-  justify-content:left;
   align-items: center;
-  gap: 2;
-  margin-top:2rem;
-  margin-left: 1rem;
- }
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
 
- .detailsContainer {
-  line-height: 10px;
+.insightTitle i {
+  color: #3b82f6;
+  font-size: 1.1rem;
+}
+
+.profileInsights .fa-user-group, 
+.profileInsights .fa-person-circle-question {
+  color: #3b82f6;
+}
+
+.profileDetails {
+  display: flex;
   
- }
+  align-items: center;
+  gap: 1rem;
+  padding:0;
+  padding-left:.75rem;
+}
+
+.profileDetails:hover {
+  border-radius: 16px;
+  background-color: #edf4ff;
+  
+}
+
+.profileDetails .profileAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  line-height: 10px;
+  padding: .75rem;
+}
+
+.detailTitle {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.detailType {
+  font-size: 0.85rem;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* Quick Tips List */
+.quickTips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quickTips li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.quickTips li::before {
+  content: "•";
+  color: #3b82f6;
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 800px) {
+  .appInsightContainer {
+    margin: 1rem auto 0;
+  }
+  
+  .profileInsights, .quickTips {
+    min-height: auto;
+    padding: 1rem;
+  }
+}

@@ -65,8 +65,10 @@ export default function Homepage(props) {
              <div className="user-avatar">
                   <img src={image} alt="User" />
             </div>
+            <div className="detailsContainer">
             <span className="detailTitle">Test again</span>
             <p className="detailType">Pet</p>
+            </div>
           </div>
         </div>
 
