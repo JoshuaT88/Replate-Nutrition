@@ -59,6 +59,9 @@ export default function Homepage(props) {
             <div className="detailsContainer">
               <span className="detailTitle">Test</span>
               <p className="detailType">Human</p>
+              <div className="detailsIcon">
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
             </div>
           </div>
           <div className="profileDetails">
@@ -68,6 +71,9 @@ export default function Homepage(props) {
             <div className="detailsContainer">
             <span className="detailTitle">Test again</span>
             <p className="detailType">Pet</p>
+            <div className="detailsIcon">
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
             </div>
           </div>
         </div>

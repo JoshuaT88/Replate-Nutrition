@@ -381,7 +381,6 @@ body {
   overflow-x: hidden;
   min-width: 0;
   background-color: #fff;
-  padding-left: auto;
 }
 
 @media (max-width: 800px) {
@@ -603,8 +602,11 @@ margin-top: 10px;
 .detailsContainer {
   display: flex;
   flex-direction: column;
-  line-height: 10px;
-  padding: .75rem;
+  line-height:10px;
+  padding: .5rem;
+  gap: 0.25rem;
+  flex: 1;
+  position: relative;
 }
 
 .detailTitle {
@@ -617,6 +619,25 @@ margin-top: 10px;
   font-size: 0.85rem;
   color: #3b82f6;
   font-weight: 500;
+}
+
+.detailsIcon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding-right: 1rem;
+}
+
+.detailsIcon i {
+  color: #3b82f6;
+  font-size: 1rem;
+}
+
+.profileDetails:hover .detailsIcon {
+  opacity: 1;
 }
 
 /* Quick Tips List */
@@ -653,4 +674,291 @@ margin-top: 10px;
     min-height: auto;
     padding: 1rem;
   }
+}
+
+/* ============================================
+   PROFILES PAGE LAYOUT
+   ============================================ */
+
+.profilesPage {
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 800px) {
+  .profilesPage {
+    padding: 1rem;
+  }
+}
+
+.profilesTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profilesTopText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profilesHeader {
+  font-weight: 800;
+  font-size: 2.3rem;
+  color: #111827;
+}
+
+.profilesBio {
+  font-size: 1rem;
+  color: rgb(70, 70, 70);
+  font-weight: 400;
+  margin: 0;
+}
+
+.addProfile {
+  flex-shrink: 0;
+}
+
+.addProfileButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.addProfileButton:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.addProfileButton:active {
+  transform: translateY(0);
+}
+
+/* Search Bar */
+.profilesSearchContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profilesSearchContainer:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.profilesSearchContainer i {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.profilesSearchInput {
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: #111827;
+  width: 100%;
+  background: transparent;
+}
+
+.profilesSearchInput::placeholder {
+  color: #9ca3af;
+}
+
+/* Section Header */
+.profilesSection {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto 2rem;
+}
+
+.profilesSectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.profilesSectionHeader > i {
+  color: #374151;
+  font-size: 1.1rem;
+}
+
+.profilesSectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.profilesSectionCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+/* Profile Cards Grid */
+.profileCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Individual Profile Card */
+.profileCard {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profileCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.profileCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.profileCardInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profileCardAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #a0896e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.profileCardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.profileCardName {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.profileCardAge {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Edit / Delete Buttons */
+.profileCardActions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.profileCardBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 6px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.profileCardBtn:hover {
+  background-color: #f3f4f6;
+  color: #3b82f6;
+}
+
+.profileCardBtn.delete:hover {
+  color: #ef4444;
+}
+
+/* Tags */
+.profileCardTags {
+  margin-top: 0.75rem;
+}
+
+.tagLabel {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.tag.condition {
+  background-color: #eff6ff;
+  color: #3b82f6;
+  border: 1px solid #bfdbfe;
+}
+
+.tag.dietary {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
 }
